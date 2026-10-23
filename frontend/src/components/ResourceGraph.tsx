@@ -25,8 +25,10 @@ export function ResourceGraph({ topology }: { topology: Topology }) {
   return (
     <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
       <div className="mb-2 flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-slate-300">
-          Resource Graph <span className="text-[10px] text-slate-500">SIMULATED topology · affected resources highlighted</span>
+        <h3 className="flex items-center gap-2 text-sm font-semibold text-slate-300">
+          Resource Graph
+          <span className="rounded bg-amber-950 px-2 py-0.5 text-[10px] font-normal text-amber-300 border border-amber-800">SIMULATED topology</span>
+          <span className="text-[10px] font-normal text-slate-500">affected resources highlighted</span>
         </h3>
         <span className={`text-xs ${topology.overall === "degraded" ? "text-amber-400" : "text-emerald-400"}`}>
           posture: {topology.overall}
