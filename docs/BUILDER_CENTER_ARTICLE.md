@@ -1,7 +1,7 @@
 # AegisPulse AI: Fast Decisions, Grounded Reasoning, Deterministic Safety
 
 **Tags:** #strands-decider-2b #tool-selection
-**Repository:** <REPO_URL_PLACEHOLDER>  ·  **Demo video:** <VIDEO_URL_PLACEHOLDER>
+**Repository:** https://github.com/sreechoudary/aegispulse-ai  ·  **Demo video:** <VIDEO_URL_PLACEHOLDER>
 
 ## The problem
 
