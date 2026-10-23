@@ -1,0 +1,24 @@
+# AegisPulse AI - Strands Decider 2B inference server (CPU, linux/amd64)
+FROM --platform=linux/amd64 python:3.12-slim
+
+ENV PIP_NO_CACHE_DIR=1 \
+    PYTHONUNBUFFERED=1 \
+    OMP_NUM_THREADS=8 \
+    HF_HOME=/models/hf
+
+# strands-decider pulls torch (CPU build on linux/amd64) + transformers.
+RUN pip install --no-cache-dir "strands-decider==0.1.0"
+
+RUN mkdir -p /models/hf
+
+ENV AEGIS_DECIDER_MODEL=StrandsAgents/strands-decider-2B-qwen3.5-v1-2610 \
+    AEGIS_DECIDER_DEVICE=cpu \
+    AEGIS_DECIDER_PORT=8777
+
+EXPOSE 8777
+
+# Readiness: a trivial systemone call returns JSON once the model is loaded.
+HEALTHCHECK --interval=15s --timeout=10s --start-period=180s --retries=10 \
+  CMD python -c "import urllib.request,json,sys; r=urllib.request.Request('http://127.0.0.1:8777/v1/systemone', data=json.dumps({'state':'ping','questions':{'q':{'type':'noul','instructions':'ready?'}}}).encode(), headers={'content-type':'application/json'}); sys.exit(0 if 'answers' in json.loads(urllib.request.urlopen(r,timeout=8).read()) else 1)" || exit 1
+
+CMD ["sh","-c","strands-decider serve $AEGIS_DECIDER_MODEL --device $AEGIS_DECIDER_DEVICE --port $AEGIS_DECIDER_PORT"]

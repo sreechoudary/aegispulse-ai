@@ -83,6 +83,13 @@ export default function App() {
       </header>
 
       <main className="mx-auto max-w-6xl space-y-6 p-6">
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border border-slate-800 bg-slate-900/60 px-4 py-2 text-xs">
+          <span className="font-semibold text-slate-300">What is live:</span>
+          <span className="rounded bg-sky-950 px-2 py-0.5 text-sky-300 border border-sky-800">REAL — Strands Decider 2B inference</span>
+          <span className="rounded bg-sky-950 px-2 py-0.5 text-sky-300 border border-sky-800">REAL — Amazon Bedrock reasoning</span>
+          <span className="rounded bg-amber-950 px-2 py-0.5 text-amber-300 border border-amber-800">SIMULATED — telemetry, topology &amp; remediation</span>
+          <span className="text-slate-500">· no real infrastructure is ever modified</span>
+        </div>
         {error && <div className="rounded border border-red-700 bg-red-950/50 p-3 text-sm text-red-300">Error: {error}</div>}
 
         <section>

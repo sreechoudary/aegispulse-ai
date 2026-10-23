@@ -1,0 +1,73 @@
+# AegisPulse AI - Docker Compose for the cloud sandbox (linux/amd64, 8 vCPU / 16 GB)
+# Single public entry point: the frontend (nginx) on port 8080, which reverse-proxies /api.
+# decider and backend are NOT published to the host.
+#
+# Bedrock credentials are supplied at runtime via environment (see runbook). They are NEVER
+# baked into images. Prefer short-lived STS credentials passed through the platform's secret
+# mechanism. If AEGIS_ENABLE_BEDROCK=0, no AWS creds are needed (Decider still runs).
+services:
+  decider:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.decider
+    environment:
+      AEGIS_DECIDER_DEVICE: cpu
+      OMP_NUM_THREADS: "8"
+    volumes:
+      - hf_cache:/models/hf       # persist downloaded weights across restarts
+    expose:
+      - "8777"                    # internal only
+    deploy:
+      resources:
+        limits:
+          cpus: "7.0"
+          memory: 12g
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.backend
+    environment:
+      AEGIS_DECIDER_ENDPOINT: http://decider:8777
+      AEGIS_DB_URL: sqlite:////data/aegispulse.db
+      AEGIS_ENABLE_BEDROCK: "${AEGIS_ENABLE_BEDROCK:-1}"
+      AEGIS_BEDROCK_MODEL: "${AEGIS_BEDROCK_MODEL:-amazon.nova-lite-v1:0}"
+      AWS_REGION: "${AWS_REGION:-us-east-1}"
+      # Short-lived STS creds injected by the platform; empty if Bedrock disabled.
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID:-}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY:-}"
+      AWS_SESSION_TOKEN: "${AWS_SESSION_TOKEN:-}"
+    volumes:
+      - app_data:/data
+    expose:
+      - "8000"                    # internal only
+    depends_on:
+      decider:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 2g
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.frontend
+    ports:
+      - "8080:8080"               # the ONLY published port (application entry point)
+    depends_on:
+      backend:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512m
+    restart: unless-stopped
+
+volumes:
+  hf_cache:
+  app_data:

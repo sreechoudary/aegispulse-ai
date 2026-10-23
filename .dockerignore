@@ -1,0 +1,22 @@
+# never ship into images
+.venv/
+.venv-validation/
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/node_modules/
+frontend/dist/
+*.db
+*.db-wal
+*.db-shm
+.git/
+.env
+.env.*
+*.pem
+*.key
+.aws/
+aws-credentials*
+docs/validation/
+.kiro/
