@@ -35,9 +35,13 @@ Launch a synthetic production incident and watch the agent work:
 |---|---|
 | ![Incident Arena](docs/screenshots/arena.png) | ![Decision Observatory](docs/screenshots/decision.png) |
 
-| Resource Graph (incident highlighted) | Recovery Timeline + Time Machine |
+| Resource Graph (incident highlighted) | Recovery Timeline |
 |---|---|
 | ![Resource Graph](docs/screenshots/resource-graph.png) | ![Recovery](docs/screenshots/recovery.png) |
+
+| Incident Time Machine (counterfactual replay) |
+|---|
+| ![Time Machine](docs/screenshots/time-machine.png) |
 
 ## Architecture
 
