@@ -26,6 +26,19 @@ Launch a synthetic production incident and watch the agent work:
 > **AUTHORIZES**, and Bedrock **EXPLAINS** — nothing overrides the one before it. All remediation is
 > simulation-only; no component can mutate a real AWS resource.
 
+## Screenshots
+
+> Add PNGs to `docs/screenshots/` (see that folder's README for filenames). GitHub renders
+> them here once committed.
+
+| Incident Arena (scenario selected) | Decision Observatory (real Decider 2B) |
+|---|---|
+| ![Incident Arena](docs/screenshots/arena.png) | ![Decision Observatory](docs/screenshots/decision.png) |
+
+| Resource Graph (incident highlighted) | Recovery Timeline + Time Machine |
+|---|---|
+| ![Resource Graph](docs/screenshots/resource-graph.png) | ![Recovery](docs/screenshots/recovery.png) |
+
 ## Architecture
 
 GitHub renders this diagram inline (Mermaid):

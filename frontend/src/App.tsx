@@ -14,6 +14,7 @@ export default function App() {
   const [scenarios, setScenarios] = useState<Scenario[]>([]);
   const [apiUp, setApiUp] = useState<boolean | null>(null);
   const [incidentId, setIncidentId] = useState("");
+  const [activeScenario, setActiveScenario] = useState<string>("");
   const [evidence, setEvidence] = useState("");
   const [inv, setInv] = useState<InvestigateResult | null>(null);
   const [decision, setDecision] = useState<DecideResult | null>(null);
@@ -33,6 +34,7 @@ export default function App() {
   async function launch(id: string) {
     try {
       setError(""); setDecision(null); setRecovery(null); setReplay(null); setTimeline([]);
+      setActiveScenario(id);
       setPhase("investigating"); log(`Launching ${id}`);
       const incident = await api.createIncident(id); setIncidentId(incident.incident_id);
       log(`Incident ${incident.incident_id} · health=${incident.telemetry.service_health}`);
@@ -93,15 +95,33 @@ export default function App() {
         {error && <div className="rounded border border-red-700 bg-red-950/50 p-3 text-sm text-red-300">Error: {error}</div>}
 
         <section>
-          <h2 className="mb-3 text-lg font-semibold">Incident Arena</h2>
+          <div className="mb-3 flex items-center justify-between">
+            <h2 className="text-lg font-semibold">Incident Arena</h2>
+            {activeScenario && (
+              <span className="text-xs text-slate-400">
+                Running: <span className="font-semibold text-sky-300">{scenarios.find((x) => x.id === activeScenario)?.name ?? activeScenario}</span>
+                {incidentId && <span className="text-slate-500"> · {incidentId}</span>}
+              </span>
+            )}
+          </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {scenarios.map((s) => (
-              <button key={s.id} onClick={() => launch(s.id)}
-                className="group rounded-lg border border-slate-700 bg-slate-900 p-3 text-left transition hover:border-sky-600 hover:bg-slate-800">
-                <div className="font-medium text-slate-100 group-hover:text-sky-300">{s.name}</div>
-                <div className="mt-1 text-xs text-slate-500">{s.description}</div>
-              </button>
-            ))}
+            {scenarios.map((s) => {
+              const active = s.id === activeScenario;
+              return (
+                <button key={s.id} onClick={() => launch(s.id)} aria-pressed={active}
+                  className={`group rounded-lg border p-3 text-left transition ${
+                    active
+                      ? "border-sky-400 bg-sky-950/40 ring-2 ring-sky-500/60 shadow-lg shadow-sky-900/30"
+                      : "border-slate-700 bg-slate-900 hover:border-sky-600 hover:bg-slate-800"
+                  }`}>
+                  <div className="flex items-center justify-between">
+                    <div className={`font-medium ${active ? "text-sky-300" : "text-slate-100 group-hover:text-sky-300"}`}>{s.name}</div>
+                    {active && <span className="rounded-full bg-sky-500 px-2 py-0.5 text-[10px] font-semibold text-slate-950">SELECTED</span>}
+                  </div>
+                  <div className="mt-1 text-xs text-slate-500">{s.description}</div>
+                </button>
+              );
+            })}
           </div>
         </section>
 
