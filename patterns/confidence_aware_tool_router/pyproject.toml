@@ -1,0 +1,21 @@
+[project]
+name = "confidence-aware-tool-router"
+version = "0.1.0"
+description = "Reusable #tool-selection decision pattern using Strands Decider 2B"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+strands = ["strands-agents"]
+dev = ["pytest"]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["confidence_aware_tool_router*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

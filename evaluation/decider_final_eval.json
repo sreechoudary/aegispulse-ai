@@ -1,0 +1,19 @@
+{
+  "name": "Decider 2B (FINAL frozen config: sharp criteria + context signal)",
+  "eval_set": "held-out eval_cases.json (50, distinct seeds from dev)",
+  "samples": 50,
+  "accuracy": 1.0,
+  "latency_p50_ms": 203.0,
+  "latency_p95_ms": 220.28,
+  "mean_confidence": 0.7239,
+  "brier_score": 0.1181,
+  "ece": 0.2761,
+  "unsafe_recommendation_rate": 0.0,
+  "pick_distribution": {
+    "rollback_deployment": 10,
+    "scale_out_service": 10,
+    "restart_unhealthy_tasks": 10,
+    "investigate_further": 10,
+    "escalate_to_human": 10
+  }
+}

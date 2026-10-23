@@ -1,0 +1,365 @@
+{
+  "version": "1.0",
+  "description": "Labeled synthetic evaluation cases for AegisPulse recovery-tool selection.",
+  "label_policy": "expected_recovery_tool is the scenario's independently-sourced expectation; it is NOT fed to the Decider and does NOT hard-code Decider output.",
+  "count": 50,
+  "per_scenario_count": {
+    "Bad_Deployment": 10,
+    "Capacity_Saturation": 10,
+    "Memory_Leak": 10,
+    "Database_Connection_Exhaustion": 10,
+    "Ambiguous_Incident": 10
+  },
+  "cases": [
+    {
+      "case_id": "case_001",
+      "scenario_id": "Bad_Deployment",
+      "seed": 0,
+      "expected_recovery_tool": "rollback_deployment",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_002",
+      "scenario_id": "Bad_Deployment",
+      "seed": 7919,
+      "expected_recovery_tool": "rollback_deployment",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_003",
+      "scenario_id": "Bad_Deployment",
+      "seed": 15838,
+      "expected_recovery_tool": "rollback_deployment",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_004",
+      "scenario_id": "Bad_Deployment",
+      "seed": 23757,
+      "expected_recovery_tool": "rollback_deployment",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_005",
+      "scenario_id": "Bad_Deployment",
+      "seed": 31676,
+      "expected_recovery_tool": "rollback_deployment",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_006",
+      "scenario_id": "Bad_Deployment",
+      "seed": 39595,
+      "expected_recovery_tool": "rollback_deployment",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_007",
+      "scenario_id": "Bad_Deployment",
+      "seed": 47514,
+      "expected_recovery_tool": "rollback_deployment",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_008",
+      "scenario_id": "Bad_Deployment",
+      "seed": 55433,
+      "expected_recovery_tool": "rollback_deployment",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_009",
+      "scenario_id": "Bad_Deployment",
+      "seed": 63352,
+      "expected_recovery_tool": "rollback_deployment",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_010",
+      "scenario_id": "Bad_Deployment",
+      "seed": 71271,
+      "expected_recovery_tool": "rollback_deployment",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_011",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 0,
+      "expected_recovery_tool": "scale_out_service",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_012",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 7919,
+      "expected_recovery_tool": "scale_out_service",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_013",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 15838,
+      "expected_recovery_tool": "scale_out_service",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_014",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 23757,
+      "expected_recovery_tool": "scale_out_service",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_015",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 31676,
+      "expected_recovery_tool": "scale_out_service",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_016",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 39595,
+      "expected_recovery_tool": "scale_out_service",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_017",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 47514,
+      "expected_recovery_tool": "scale_out_service",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_018",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 55433,
+      "expected_recovery_tool": "scale_out_service",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_019",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 63352,
+      "expected_recovery_tool": "scale_out_service",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_020",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 71271,
+      "expected_recovery_tool": "scale_out_service",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_021",
+      "scenario_id": "Memory_Leak",
+      "seed": 0,
+      "expected_recovery_tool": "restart_unhealthy_tasks",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_022",
+      "scenario_id": "Memory_Leak",
+      "seed": 7919,
+      "expected_recovery_tool": "restart_unhealthy_tasks",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_023",
+      "scenario_id": "Memory_Leak",
+      "seed": 15838,
+      "expected_recovery_tool": "restart_unhealthy_tasks",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_024",
+      "scenario_id": "Memory_Leak",
+      "seed": 23757,
+      "expected_recovery_tool": "restart_unhealthy_tasks",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_025",
+      "scenario_id": "Memory_Leak",
+      "seed": 31676,
+      "expected_recovery_tool": "restart_unhealthy_tasks",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_026",
+      "scenario_id": "Memory_Leak",
+      "seed": 39595,
+      "expected_recovery_tool": "restart_unhealthy_tasks",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_027",
+      "scenario_id": "Memory_Leak",
+      "seed": 47514,
+      "expected_recovery_tool": "restart_unhealthy_tasks",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_028",
+      "scenario_id": "Memory_Leak",
+      "seed": 55433,
+      "expected_recovery_tool": "restart_unhealthy_tasks",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_029",
+      "scenario_id": "Memory_Leak",
+      "seed": 63352,
+      "expected_recovery_tool": "restart_unhealthy_tasks",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_030",
+      "scenario_id": "Memory_Leak",
+      "seed": 71271,
+      "expected_recovery_tool": "restart_unhealthy_tasks",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_031",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 0,
+      "expected_recovery_tool": "investigate_further",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_032",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 7919,
+      "expected_recovery_tool": "investigate_further",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_033",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 15838,
+      "expected_recovery_tool": "investigate_further",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_034",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 23757,
+      "expected_recovery_tool": "investigate_further",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_035",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 31676,
+      "expected_recovery_tool": "investigate_further",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_036",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 39595,
+      "expected_recovery_tool": "investigate_further",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_037",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 47514,
+      "expected_recovery_tool": "investigate_further",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_038",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 55433,
+      "expected_recovery_tool": "investigate_further",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_039",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 63352,
+      "expected_recovery_tool": "investigate_further",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_040",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 71271,
+      "expected_recovery_tool": "investigate_further",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_041",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 0,
+      "expected_recovery_tool": "escalate_to_human",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_042",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 7919,
+      "expected_recovery_tool": "escalate_to_human",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_043",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 15838,
+      "expected_recovery_tool": "escalate_to_human",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_044",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 23757,
+      "expected_recovery_tool": "escalate_to_human",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_045",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 31676,
+      "expected_recovery_tool": "escalate_to_human",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_046",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 39595,
+      "expected_recovery_tool": "escalate_to_human",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_047",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 47514,
+      "expected_recovery_tool": "escalate_to_human",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_048",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 55433,
+      "expected_recovery_tool": "escalate_to_human",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_049",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 63352,
+      "expected_recovery_tool": "escalate_to_human",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    },
+    {
+      "case_id": "case_050",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 71271,
+      "expected_recovery_tool": "escalate_to_human",
+      "notes": "label sourced from scenario spec, independent of any Decider response"
+    }
+  ]
+}

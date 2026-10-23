@@ -1,0 +1,55 @@
+{
+  "methodology": {
+    "cases": 50,
+    "warmups_excluded": 3,
+    "identical_inputs": true,
+    "fixed_option_set": [
+      "rollback_deployment",
+      "scale_out_service",
+      "restart_unhealthy_tasks",
+      "investigate_further",
+      "escalate_to_human"
+    ],
+    "hardware": "arm64 arm",
+    "region": "us-east-1",
+    "note": "All numbers are measured from real inference. No fabricated values."
+  },
+  "decider": {
+    "name": "Decider 2B",
+    "model_id": "strands-decider-2B-qwen3.5-v1-2610",
+    "samples": 50,
+    "accuracy": 0.4,
+    "latency_p50_ms": 171.25,
+    "latency_p95_ms": 173.91,
+    "mean_confidence": 0.5253,
+    "unsafe_recommendation_rate": 0.4,
+    "abstention_rate": 0.0,
+    "total_input_tokens": 0,
+    "total_output_tokens": 0,
+    "errors": 0
+  },
+  "bedrock_only": {
+    "name": "Bedrock-only",
+    "model_id": "amazon.nova-lite-v1:0",
+    "samples": 50,
+    "accuracy": 0.56,
+    "latency_p50_ms": 516.77,
+    "latency_p95_ms": 601.15,
+    "mean_confidence": null,
+    "unsafe_recommendation_rate": 0.02,
+    "abstention_rate": 0.6,
+    "total_input_tokens": 5124,
+    "total_output_tokens": 230,
+    "errors": 0
+  },
+  "decider_hybrid": {
+    "name": "Decider 2B + Bedrock assessment (hybrid)",
+    "samples": 50,
+    "accuracy": 0.3,
+    "latency_p50_ms": 223.47,
+    "latency_p95_ms": 329.66,
+    "mean_confidence": 0.6569,
+    "unsafe_recommendation_rate": 0.4,
+    "note": "Decider receives the real Bedrock assessment in its state (the production hybrid config)"
+  }
+}

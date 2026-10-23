@@ -1,0 +1,187 @@
+{
+  "version": "1.0",
+  "description": "Held-out DEV set for prompt/evidence refinement. Disjoint seeds from eval_cases.json. Never used for final reported numbers.",
+  "count": 30,
+  "cases": [
+    {
+      "case_id": "dev_001",
+      "scenario_id": "Bad_Deployment",
+      "seed": 1000000,
+      "expected_recovery_tool": "rollback_deployment"
+    },
+    {
+      "case_id": "dev_002",
+      "scenario_id": "Bad_Deployment",
+      "seed": 1104729,
+      "expected_recovery_tool": "rollback_deployment"
+    },
+    {
+      "case_id": "dev_003",
+      "scenario_id": "Bad_Deployment",
+      "seed": 1209458,
+      "expected_recovery_tool": "rollback_deployment"
+    },
+    {
+      "case_id": "dev_004",
+      "scenario_id": "Bad_Deployment",
+      "seed": 1314187,
+      "expected_recovery_tool": "rollback_deployment"
+    },
+    {
+      "case_id": "dev_005",
+      "scenario_id": "Bad_Deployment",
+      "seed": 1418916,
+      "expected_recovery_tool": "rollback_deployment"
+    },
+    {
+      "case_id": "dev_006",
+      "scenario_id": "Bad_Deployment",
+      "seed": 1523645,
+      "expected_recovery_tool": "rollback_deployment"
+    },
+    {
+      "case_id": "dev_007",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 1000000,
+      "expected_recovery_tool": "scale_out_service"
+    },
+    {
+      "case_id": "dev_008",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 1104729,
+      "expected_recovery_tool": "scale_out_service"
+    },
+    {
+      "case_id": "dev_009",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 1209458,
+      "expected_recovery_tool": "scale_out_service"
+    },
+    {
+      "case_id": "dev_010",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 1314187,
+      "expected_recovery_tool": "scale_out_service"
+    },
+    {
+      "case_id": "dev_011",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 1418916,
+      "expected_recovery_tool": "scale_out_service"
+    },
+    {
+      "case_id": "dev_012",
+      "scenario_id": "Capacity_Saturation",
+      "seed": 1523645,
+      "expected_recovery_tool": "scale_out_service"
+    },
+    {
+      "case_id": "dev_013",
+      "scenario_id": "Memory_Leak",
+      "seed": 1000000,
+      "expected_recovery_tool": "restart_unhealthy_tasks"
+    },
+    {
+      "case_id": "dev_014",
+      "scenario_id": "Memory_Leak",
+      "seed": 1104729,
+      "expected_recovery_tool": "restart_unhealthy_tasks"
+    },
+    {
+      "case_id": "dev_015",
+      "scenario_id": "Memory_Leak",
+      "seed": 1209458,
+      "expected_recovery_tool": "restart_unhealthy_tasks"
+    },
+    {
+      "case_id": "dev_016",
+      "scenario_id": "Memory_Leak",
+      "seed": 1314187,
+      "expected_recovery_tool": "restart_unhealthy_tasks"
+    },
+    {
+      "case_id": "dev_017",
+      "scenario_id": "Memory_Leak",
+      "seed": 1418916,
+      "expected_recovery_tool": "restart_unhealthy_tasks"
+    },
+    {
+      "case_id": "dev_018",
+      "scenario_id": "Memory_Leak",
+      "seed": 1523645,
+      "expected_recovery_tool": "restart_unhealthy_tasks"
+    },
+    {
+      "case_id": "dev_019",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 1000000,
+      "expected_recovery_tool": "investigate_further"
+    },
+    {
+      "case_id": "dev_020",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 1104729,
+      "expected_recovery_tool": "investigate_further"
+    },
+    {
+      "case_id": "dev_021",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 1209458,
+      "expected_recovery_tool": "investigate_further"
+    },
+    {
+      "case_id": "dev_022",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 1314187,
+      "expected_recovery_tool": "investigate_further"
+    },
+    {
+      "case_id": "dev_023",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 1418916,
+      "expected_recovery_tool": "investigate_further"
+    },
+    {
+      "case_id": "dev_024",
+      "scenario_id": "Database_Connection_Exhaustion",
+      "seed": 1523645,
+      "expected_recovery_tool": "investigate_further"
+    },
+    {
+      "case_id": "dev_025",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 1000000,
+      "expected_recovery_tool": "escalate_to_human"
+    },
+    {
+      "case_id": "dev_026",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 1104729,
+      "expected_recovery_tool": "escalate_to_human"
+    },
+    {
+      "case_id": "dev_027",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 1209458,
+      "expected_recovery_tool": "escalate_to_human"
+    },
+    {
+      "case_id": "dev_028",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 1314187,
+      "expected_recovery_tool": "escalate_to_human"
+    },
+    {
+      "case_id": "dev_029",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 1418916,
+      "expected_recovery_tool": "escalate_to_human"
+    },
+    {
+      "case_id": "dev_030",
+      "scenario_id": "Ambiguous_Incident",
+      "seed": 1523645,
+      "expected_recovery_tool": "escalate_to_human"
+    }
+  ]
+}

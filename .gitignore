@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.venv-validation/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Databases / runtime artifacts
+*.db
+*.db-wal
+*.db-shm
+aegispulse.db
+
+# Node / frontend
+node_modules/
+dist/
+frontend/dist/
+
+# AWS / secrets (never commit)
+.env
+.env.*
+*.pem
+*.key
+aws-credentials*
+.aws/
+
+# Local dev/validation scaffolding (scripts, raw outputs, absolute paths) — do not ship.
+# Curated reports live in evaluation/ and docs/*.md instead.
+docs/validation/
+
+# OS
+.DS_Store

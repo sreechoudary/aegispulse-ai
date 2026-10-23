@@ -1,0 +1,23 @@
+[project]
+name = "aegispulse-backend"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+  "strands-decider==0.1.0",
+  "strands-agents==1.61.1",
+  "boto3",
+  "fastapi==0.143.3",
+  "pydantic==2.14.1",
+  "sqlmodel==0.0.48",
+  "httpx",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "hypothesis", "ruff", "mypy"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff.lint.per-file-ignores]
+"app/benchmark/run_*.py" = ["SIM115", "BLE001", "S110"]

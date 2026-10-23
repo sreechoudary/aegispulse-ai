@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "hardware": "arm64",
+    "region": "us-east-1",
+    "decider_model": "strands-decider-2B-qwen3.5-v1-2610",
+    "bedrock_model": "amazon.nova-lite-v1:0",
+    "eval_cases": 50,
+    "note": "real inference; no fabricated values; 50 cases is small \u2014 no statistical-superiority claims"
+  },
+  "evaluation_A_bedrock_only": {
+    "name": "Bedrock-only equal-context",
+    "model_id": "amazon.nova-lite-v1:0",
+    "samples": 50,
+    "accuracy": 0.72,
+    "latency_p50_ms": 534.78,
+    "latency_p95_ms": 647.94,
+    "unsafe_recommendation_rate": 0.0,
+    "abstention_rate": 0.48,
+    "total_input_tokens": 5664,
+    "total_output_tokens": 248,
+    "errors": 0
+  },
+  "evaluation_B_hybrid_agent": {
+    "name": "Hybrid (Bedrock->Decider->policy->approval)",
+    "samples": 50,
+    "selection_accuracy": 0.96,
+    "e2e_decision_latency_p50_ms": 957.78,
+    "e2e_decision_latency_p95_ms": 1146.16,
+    "unsafe_recommendation_rate": 0.0,
+    "high_blast_required_approval": 18,
+    "simulated_recovery_or_authorized": 18,
+    "blocked": 10
+  },
+  "evaluation_B_bedrock_agent": {
+    "name": "Bedrock-only agent (same policy)",
+    "samples": 50,
+    "selection_accuracy": 0.72,
+    "e2e_decision_latency_p50_ms": 495.55,
+    "e2e_decision_latency_p95_ms": 593.85,
+    "unsafe_recommendation_rate": 0.0,
+    "high_blast_required_approval": 20,
+    "simulated_recovery_or_authorized": 26,
+    "blocked": 0
+  }
+}
