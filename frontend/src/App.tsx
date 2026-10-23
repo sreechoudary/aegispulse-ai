@@ -13,6 +13,8 @@ const HEALTH_COLOR: Record<string, string> = {
 export default function App() {
   const [scenarios, setScenarios] = useState<Scenario[]>([]);
   const [apiUp, setApiUp] = useState<boolean | null>(null);
+  const [deciderUp, setDeciderUp] = useState<boolean | null>(null);
+  const [bedrockOn, setBedrockOn] = useState<boolean | null>(null);
   const [incidentId, setIncidentId] = useState("");
   const [activeScenario, setActiveScenario] = useState<string>("");
   const [evidence, setEvidence] = useState("");
@@ -25,8 +27,13 @@ export default function App() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    api.health().then(() => setApiUp(true)).catch(() => setApiUp(false));
+    const poll = () => api.health()
+      .then((h: any) => { setApiUp(true); setDeciderUp(!!h.decider_online); setBedrockOn(!!h.bedrock_enabled); })
+      .catch(() => { setApiUp(false); setDeciderUp(false); });
+    poll();
     api.scenarios().then(setScenarios).catch(() => setApiUp(false));
+    const t = setInterval(poll, 5000);
+    return () => clearInterval(t);
   }, []);
 
   function log(msg: string) { setTimeline((t) => [...t, `${new Date().toLocaleTimeString()}  ${msg}`]); }
@@ -78,9 +85,19 @@ export default function App() {
             <h1 className="text-2xl font-bold tracking-tight text-sky-300">AegisPulse AI</h1>
             <p className="text-sm text-slate-400">Detect. Decide. Defend. — Autonomous Incident Commander</p>
           </div>
-          <span className={`text-xs ${apiUp === null ? "text-slate-500" : apiUp ? "text-emerald-400" : "text-red-400"}`}>
-            {apiUp === null ? "connecting…" : apiUp ? "● backend online" : "● backend offline"}
-          </span>
+          <div className="flex items-center gap-2 text-xs">
+            <span className={apiUp === null ? "text-slate-500" : apiUp ? "text-emerald-400" : "text-red-400"}>
+              {apiUp === null ? "connecting…" : apiUp ? "● backend" : "● backend offline"}
+            </span>
+            <span className={deciderUp == null ? "text-slate-500" : deciderUp ? "text-emerald-400" : "text-red-400"}
+              title={deciderUp ? "Strands Decider 2B reachable" : "Decider server DOWN — scenarios will fall back to investigate_further"}>
+              {deciderUp == null ? "" : deciderUp ? "● Decider 2B" : "● Decider offline"}
+            </span>
+            <span className={bedrockOn ? "text-emerald-400" : "text-slate-500"}
+              title={bedrockOn ? "Amazon Bedrock assessment enabled" : "Bedrock disabled (AEGIS_ENABLE_BEDROCK=0)"}>
+              {bedrockOn == null ? "" : bedrockOn ? "● Bedrock" : "○ Bedrock off"}
+            </span>
+          </div>
         </div>
       </header>
 

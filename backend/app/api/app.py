@@ -39,7 +39,22 @@ def build_app(service: IncidentService) -> FastAPI:
 
     @api.get("/api/v1/health")
     def health():
-        return {"status": "ok", "version": "0.1.0"}
+        # Probe the Decider server so the UI can show whether real inference is available.
+        decider_ok = False
+        try:
+            import socket
+            from urllib.parse import urlparse
+            ep = urlparse(service.decider._router.endpoint if hasattr(service.decider, "_router") else "")
+            host = ep.hostname or "127.0.0.1"
+            port = ep.port or 8777
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sk:
+                sk.settimeout(1.0)
+                decider_ok = sk.connect_ex((host, port)) == 0
+        except Exception:  # noqa: BLE001 - health probe must never raise
+            decider_ok = False
+        return {"status": "ok", "version": "0.1.0",
+                "decider_online": decider_ok,
+                "bedrock_enabled": service.bedrock_assess is not None}
 
     @api.get("/api/v1/scenarios")
     def scenarios():
