@@ -1,0 +1,15 @@
+# AegisPulse AI backend - tested versions (Python 3.12)
+strands-decider==0.1.0
+strands-agents==1.61.1
+boto3
+fastapi==0.143.3
+uvicorn==0.54.0
+pydantic==2.14.1
+sqlmodel==0.0.48
+httpx
+# dev / test
+pytest
+pytest-asyncio
+hypothesis
+ruff
+mypy

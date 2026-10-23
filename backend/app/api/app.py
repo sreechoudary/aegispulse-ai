@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
@@ -32,6 +33,8 @@ class ReplayReq(BaseModel):
 
 def build_app(service: IncidentService) -> FastAPI:
     api = FastAPI(title="AegisPulse AI", version="0.1.0")
+    api.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"],
+                       allow_headers=["*"])
     sim = SimulationEngine()
 
     @api.get("/api/v1/health")
