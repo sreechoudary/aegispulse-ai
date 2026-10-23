@@ -79,7 +79,41 @@ class SimulationEngine:
             "series": series,
             "context_signal": SCENARIOS[scenario_id].context_signal,
             "summary": self._summary(scenario_id, series),
+            "topology": self._topology(scenario_id, series, health),
         }
+
+
+    def _topology(self, scenario_id: str, series: dict, health: str) -> dict:
+        """Deterministic SIMULATED service graph for the scenario, with node status derived
+        from the generated telemetry (not invented). Illustrative of the simulated
+        environment only; this is not real AWS resource discovery."""
+        last = {k: v[-1] for k, v in series.items()}
+        def status(flag):
+            return "critical" if flag else "ok"
+        nodes = [
+            {"id": "alb", "label": "Load Balancer", "kind": "alb",
+             "status": status(last["error_rate_pct"] > 5 or last["latency_p95_ms"] > 400),
+             "metric": f"5xx {last['error_rate_pct']}% · p95 {last['latency_p95_ms']}ms"},
+            {"id": "svc", "label": "App Service", "kind": "service",
+             "status": status(last["cpu_pct"] > 85 or last["error_rate_pct"] > 5),
+             "metric": f"cpu {last['cpu_pct']}%"},
+            {"id": "tasks", "label": "Tasks / Pods", "kind": "compute",
+             "status": status(last["memory_pct"] > 85),
+             "metric": f"mem {last['memory_pct']}%"},
+            {"id": "db", "label": "Database", "kind": "database",
+             "status": status(last["db_connections_pct"] > 80),
+             "metric": f"connections {last['db_connections_pct']}%"},
+            {"id": "deploy", "label": "Latest Deployment", "kind": "deployment",
+             "status": status(scenario_id == "Bad_Deployment"),
+             "metric": SCENARIOS[scenario_id].context_signal or "no recent change"},
+        ]
+        edges = [
+            {"from": "deploy", "to": "svc"},
+            {"from": "alb", "to": "svc"},
+            {"from": "svc", "to": "tasks"},
+            {"from": "svc", "to": "db"},
+        ]
+        return {"nodes": nodes, "edges": edges, "overall": health}
 
     def execute(self, tool: str, params: Mapping[str, Any]) -> RecoveryOutcome:
         """Simulation-only. Deterministic outcome keyed by tool+params; no real effect."""

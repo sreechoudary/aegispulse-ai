@@ -6,8 +6,11 @@ export const RECOVERY_TOOLS = [
 export type RecoveryTool = (typeof RECOVERY_TOOLS)[number];
 
 export interface Scenario { id: string; name: string; description: string; expected_outcome: RecoveryTool; }
+export interface GraphNode { id: string; label: string; kind: string; status: string; metric: string; }
+export interface GraphEdge { from: string; to: string; }
+export interface Topology { nodes: GraphNode[]; edges: GraphEdge[]; overall: string; }
 export interface Telemetry { scenario_id: string; seed: number; service_health: string;
-  context_signal?: string; series: Record<string, number[]>; summary: string; }
+  context_signal?: string; series: Record<string, number[]>; summary: string; topology?: Topology; }
 export interface InvestigateResult { evidence_snapshot_id: string; assessment: string; telemetry: Telemetry; }
 export interface DecideResult {
   selected: RecoveryTool; confidence: number; policy_outcome: string; policy_reason: string;

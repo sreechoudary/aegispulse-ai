@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { api, Scenario, DecideResult, InvestigateResult, ReplayResult } from "./api/client";
 import { ConfidenceView } from "./components/ConfidenceView";
+import { ResourceGraph } from "./components/ResourceGraph";
 
 type Phase = "idle" | "investigating" | "assessing" | "deciding" | "awaiting-approval"
   | "ready" | "recovered" | "blocked" | "error";
@@ -96,6 +97,12 @@ export default function App() {
             ))}
           </div>
         </section>
+
+        {inv?.telemetry?.topology && (
+          <section>
+            <ResourceGraph topology={inv.telemetry.topology} />
+          </section>
+        )}
 
         {phase !== "idle" && (
           <section className="grid gap-4 lg:grid-cols-3">
