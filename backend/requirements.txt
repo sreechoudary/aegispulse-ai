@@ -1,4 +1,7 @@
 # AegisPulse AI backend - tested versions (Python 3.12)
+# Reusable #tool-selection pattern (local package, installed editable)
+-e ../patterns/confidence_aware_tool_router
+
 strands-decider==0.1.0
 strands-agents==1.61.1
 boto3

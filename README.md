@@ -109,7 +109,8 @@ docs/            article, demo script, storyboard, checklists, contracts
 uv venv .venv --python 3.12
 VIRTUAL_ENV=.venv uv pip install -r backend/requirements.txt
 ```
-The first run downloads the Decider weights from Hugging Face (~4 GB) into ~/.cache/huggingface.
+This also installs the local reusable pattern package (`patterns/confidence_aware_tool_router`,
+referenced as an editable dependency in `requirements.txt`). The first run downloads the Decider weights from Hugging Face (~4 GB) into ~/.cache/huggingface.
 
 ### 2. Start the Decider model server (keep it running)
 ```
